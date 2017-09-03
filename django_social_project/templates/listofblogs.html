@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block content %}
+
+<link href="http://www.tutorialspoint.com/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/blog-list.css' %}" rel="stylesheet">
+<a href="/logout">
+    <img src="{% static 'images/glogout.png' %}" style="   height: 100%;
+                                                          width: 13%;
+                                                          display: block;
+                                                          margin-left: auto;
+                                                          margin-right: auto;">
+
+  </a>
+
+
+<div class="container">
+
+        <h1 class="thick-heading">
+        || List of Blogs ||
+      </h1>
+
+        <!-- First Featurette -->
+        <div class="featurette" id="about">
+            <!------------------------code---------------start---------------->
+            <div class="container">
+            
+            {% for blog in blogs %}
+                <div class="well">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="http://www.tutorialspoint.com//scripts/img/logo-footer.png">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{blog.title}}</h4>
+                            <p class="text-right">By {{user}}</p>
+                            <p>{{blog.text}}</p>
+                            <ul class="list-inline list-unstyled">
+                                <li><span><i class="glyphicon glyphicon-calendar"></i> {{blog.createdAt}} </span></li>
+                                <li>|</li>
+                                
+                                <span><i class="glyphicon glyphicon-comment"></i><a href ="/getblogs/{{blog.id}}/"> Add comments</a></span>
+                                <li>|</li>
+                                <li>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </li>
+                                <li>|</li>
+                                <li>
+                                    <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                                    <span><i class="fa fa-facebook-square"></i></span>
+                                    <span><i class="fa fa-twitter-square"></i></span>
+                                    <span><i class="fa fa-google-plus-square"></i></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                {% endfor %}
+                <!----Code------end----------------------------------->
+            </div>
+    
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock content %}
+    

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block content %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<a class="form-control btn btn-login" href="/getblogs/" style="width: 20%;">List of Blogs</a>
+<a class="form-control btn btn-login" style="width: 20%;float:right;">{{email}}</a>
+
+{% if user and not user.is_anonymous %}
+      <div class="container">
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="#" class="active" id="login-form-link">Create Blog</a>
+							</div>
+							
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="login-form" method="post"  style="display: block;">
+									{% csrf_token %}
+									<div class="form-group">
+										<input type="text" name="title" id="title" tabindex="2" class="form-control" placeholder="title" value="">
+									</div>
+									<div class="form-group">
+										<input type="text" name="text" id="text" tabindex="5" class="form-control" placeholder="Text">
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Create Blog">
+											</div>
+										</div>
+									</div>
+									
+								</form>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  
+
+{% else %}
+<h1>Hello </h1>
+{% endif %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock content %}
